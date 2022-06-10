@@ -1,4 +1,9 @@
 site_name: "Tableau: Extended Tables"
+site_description: "Tableau-table: enhanced table markup for Markdown"
+site_author: "Dave Thomas (@pragdave)"
+copyright: "Copyright © 2022 Dave Thomas"
+docs_dir: "docs_source"
+site_dir: "docs"
 
 theme:
   name: material
