@@ -13,8 +13,6 @@
 
 <style>
 .tableau-table.apa thead th {
-    color: black;
-    background: white;
     border-top: 1px solid #888;
     border-bottom: 1px solid #888;
 }
@@ -23,20 +21,18 @@
 ## Colored Cell Backgrounds
 
 |!.stock.hlines Fictitious Stock Closing Prices |
-|#... Symbol/Name |{    | Volume | P/E | Close | % Change |
+|#... Symbol and Name |{    | Volume | P/E | Close | % Change |
 |:<   |<                    |>... |
 | MGC | Megacorp            | 12,312 | 19 | 243.75 |.neg -1.20 |
-| RUR | Rostrum's Universal | 4,955  | 21 |   8.26 |.pos -.65 |
-| 007 | Universal Exports   | 9,582  | 14 |  43.85 |.pos -.39 |
+| RUR | Rostrum's Universal | 4,955  | 21 |   8.26 |.pos 0.65 |
+| 007 | Universal Exports   | 9,582  | 14 |  43.85 |.pos 1.39 |
 | SSB | South Sea Bubble    | 32,485 |  3 |   0.42 |.neg -5.75 |
 
 <style>
-.tableau-table.stock td.neg {
-    background: #fdd;
-}
-.tableau-table.stock td.pos {
-    background: #dfd;
-}
+.tableau-table.stock td.neg { background: #fdd; }
+.tableau-table.stock td.pos { background: #dfd; }
+[data-md-color-scheme=slate] .tableau-table.stock td.neg { background: #633; }
+[data-md-color-scheme=slate] .tableau-table.stock td.pos { background: #252; }
 </style>
 
 ## Nutrition Table
@@ -61,22 +57,22 @@
 
 <style>
 table.nutrition {
-  border: solid 6px #666;
+  border: solid 6px var(--grid-line-color-normal);
 }
 table.nutrition .bold {
     font-weight: bold;
 }
 
 table.nutrition .ull {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--grid-line-color-normal);
 }
 
 table.nutrition .ulm {
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid var(--grid-line-color-normal);
 }
 
 table.nutrition .ulb {
-    border-bottom: 8px solid #666;
+    border-bottom: 8px solid var(--grid-line-color-normal);
 }
 </style>
 

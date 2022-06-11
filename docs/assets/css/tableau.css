@@ -1,3 +1,20 @@
+.highlight code span.gp {
+  color: #949;
+}
+
+.tabbed-content {
+  margin-top: 0.5em;
+}
+
+.md-typeset .tabbed-set {
+  margin-top: -0.20rem;
+  margin-bottom: 1.5rem;
+}
+.md-typeset .tabbed-labels>label {
+  padding-top: 0.1rem;
+  padding-bottom: 0.5rem;
+}
+
 :root{
   --hbg-h: 240deg;
   --hbg-s: 29%;
@@ -6,6 +23,17 @@
   --grid-line-color-normal: hsl(var(--hbg-h) var(--hbg-s) 80%);
   --grid-line-color-header: hsl(var(--hbg-h) var(--hbg-s) 50%);
   --stripe-bg:       hsl(var(--hbg-h) var(--hbg-s) 95%);
+}
+
+[data-md-color-scheme=slate] {
+  --hbg-h: 240deg;
+  --hbg-s: 29%;
+  --caption-bg:      hsl(var(--hbg-h) var(--hbg-s) 23%);
+  --header-bg-color: hsl(var(--hbg-h) var(--hbg-s) 30%);
+  --grid-line-color-normal: hsl(var(--hbg-h) var(--hbg-s) 50%);
+  --grid-line-color-header: hsl(var(--hbg-h) var(--hbg-s) 50%);
+  --stripe-bg:       hsl(var(--hbg-h) var(--hbg-s) 20%);
+
 }
 
 /* Reset all the mkdocs stuff */
