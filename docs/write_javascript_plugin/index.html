@@ -470,12 +470,12 @@ table-level attributes (</code>row_count<code>,</code>col_count<code>,</code>cap
 
 <span class="nx">ast</span><span class="p">.</span><span class="nx">each_row</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">...)</span><span class="w"></span>
 </code></pre></div>
-<p>One of the Ast's jobs is to work out which rows are table headers. Use
+<p>One of Ast's jobs is to work out which rows are table headers. Use
 the <code>split_out_head</code> function to return two lists of rows. 
-The <code>head</code> entry contains zero or more rows that constitute the tables
+The <code>head</code> entry contains zero or more rows that constitute the table's
 header (and will likely wind up inside a <code>&lt;thead&gt;</code> tag). The <code>body</code>
 entry is the rest of the rows.</p>
-<p>Sometimes, you need to be able to iterate over all rows, header or not
+<p>Sometimes you need to be able to iterate over all rows, header or not
 (we'll see an example of this when we implement the marked extension
 below). That's what <code>each_row</code> is for.</p>
 <h3 id="rows">Rows</h3>
@@ -489,7 +489,8 @@ function:</p>
 <p>Each cell has six attributes:</p>
 <dl>
 <dt><code>rowspan_count</code><br/><code>colspan_count</code></dt>
-<dd>the number of rows, columns, or both this cell should merge with. To
+<dd>the number of rows, columns, or both this cell should merge with. If
+the cell is not supposed to merge, the value will be zero. To
 create a <code>rowspan</code> or <code>colspan</code> attribute value, you'll need to add one
 to these values.</dd>
 <dt><code>hidden</code></dt>
@@ -595,9 +596,6 @@ type of extension, and a list of functions to inject into the pipeline.</p>
 <p>The tokenizer needs to verify that the block it is passed contains two
 or more table rows. That match is performed by the following regular
 expression. </p>
-<p>I like to use the <code>x</code> option so that I can space out and document
-complex regexps, but JavaScript support is spotty, so instead I just
-split it into lotsa of strings and concatenate them.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">TABLE_RE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">RegExp</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="sb">`(`</span><span class="w">          </span><span class="o">+</span><span class="w"></span>
 <span class="w">    </span><span class="sb">`\\s{0,3}`</span><span class="w"> </span><span class="o">+</span><span class="w">     </span><span class="c1">//permitted indentation</span><span class="w"></span>
@@ -607,6 +605,12 @@ split it into lotsa of strings and concatenate them.</p>
 <span class="w">    </span><span class="sb">`\\s*\\n`</span><span class="w">  </span><span class="o">+</span><span class="w">     </span><span class="c1">// spaces nd EOL</span><span class="w"></span>
 <span class="w">  </span><span class="sb">`){2,}`</span><span class="p">)</span><span class="w">           </span><span class="c1">// Two or more rows is a table</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I like to use the <code>x</code> option so that I can space out and document
+complex regexps, but JavaScript support is spotty, so instead I just
+split it into lots of strings and concatenate them.</p>
+</div>
 <p>Now let's start the <code>tokenizer</code> function. Marked requires a tokenizer to
 return a token object. This must have <code>type</code> and <code>raw</code> attributes. To
 this we add an attribute to hold the ast.</p>
@@ -617,7 +621,8 @@ this we add an attribute to hold the ast.</p>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Marked calls the tokenizer with <code>this</code> set to an object containing
-a lexer. Again, here's an alias so I don't have to go grovelling through
+a lexer. In typescript, you indicate this by adding a typed <code>this</code> parameter
+to the function definition. Again, here's an alias so I don't have to go grovelling through
 the <code>index.d.ts</code> file again.</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">TokenizerThis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Marked</span><span class="p">.</span><span class="nx">marked</span><span class="p">.</span><span class="nx">TokenizerThis</span><span class="w"></span>
 </code></pre></div>
