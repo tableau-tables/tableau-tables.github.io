@@ -35,11 +35,14 @@ You'll need to find an extension/plugin for the particular Markdown
 processor you're using. 
 
 * [Marked](https://github.com/markedjs/marked) (JavaScript)
-  Extension available on NPM. See ....
+  Extension available on NPM. See <https://www.npmjs.com/package/tableau-markd>.
+
+* [Markdown-It](https://github.com/markdown-it/markdown-it) (JavaScript)
+  Extension available on NPM. See <https://www.npmjs.com/package/tableau-markdown-it>.
 
 * [Python Markdown](https://python-markdown.github.io/)
   The extension is available through GitHub. For information see
-  https://....
+  <https://github.com/tableau-tables/python-tableau-parser>.
 
 ## If you use a different Markdown Processor
 

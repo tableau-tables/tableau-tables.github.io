@@ -26,4 +26,4 @@ and I needed better support for tabular material:
 
 For information on using Tableau Tables (and writing plugins for currently
 unsupported Markdown processors), see the [documention
-site](https://tableau-tables.github.io).]
+site](https://tableau-tables.github.io).
